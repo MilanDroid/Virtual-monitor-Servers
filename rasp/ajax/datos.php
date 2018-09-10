@@ -167,7 +167,7 @@
 		$result = pg_query($sqlInf);
 		while($row = pg_fetch_array($result)){
 			$data .= $row['pid']." - ".$row['usename']." - ".$row['application_name']." - ".$row['client_addr']." - ".$row['client_port'];
-			$data .= " - ".$row['backend_start']." - ".$row['state']." - ".$row['query']."\n\n";
+			$data .= " - ".$row['backend_start']." - ".$row['state']."\n\n".$row['query']."\n\n";
 		}
 
 		$datos['bd_inf'] = $data;
