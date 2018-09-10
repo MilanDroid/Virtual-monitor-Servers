@@ -140,7 +140,7 @@
 			$datos['net_conn'] = count($unique);
 			$datos['inf'] = $unique;
 
-			echo json_encode($datos);			
+			echo json_encode($datos);
 		}
 	}
 
