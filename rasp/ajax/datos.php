@@ -204,7 +204,6 @@
 	}
 
 	function diskIO() {
-
 	    $cmd = "uname";
 		$read = array();
 		$write = array();
