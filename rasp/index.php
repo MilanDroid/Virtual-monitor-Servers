@@ -117,7 +117,7 @@
 		  						</tr>
 		  						<tr>
 		  							<td>Maximo conexiones BD: </td>
-		  							<td class="inf-data"><span id="max_bd">0	</span></td>
+		  							<td class="inf-data"><span id="max_bd">0</span></td>
 		  						</tr>
 		  					</tbody>
 		  				</table>
