@@ -76,7 +76,6 @@
 	}
 
 	function memoryUsage() {
-		
 		$mem = memory_get_usage(true);
 		
 		if ($mem < 1024) {
