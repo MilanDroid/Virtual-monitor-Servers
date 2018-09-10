@@ -25,7 +25,6 @@
 	}
 
 	function systemCores() {
-		
 	    $cmd = "uname";
 	    $OS = strtolower(trim(shell_exec($cmd)));
 	 
@@ -48,7 +47,6 @@
 	}
 
 	function numberProcesses() {
-		
 		$proc_count = 0;
 		$dh = opendir('/proc');
 		
@@ -110,7 +108,6 @@
 	}
 
 	function diskUsage() {
-		
 		$disktotal = disk_total_space ('/');
 		$diskfree  = disk_free_space  ('/');
 		$diskuse   = round (100 - (($diskfree / $disktotal) * 100)) .'%';
@@ -128,7 +125,6 @@
 	}
 
 	function networkConnections() {
-		
 		if (function_exists('exec')) {
 			$unique = array();
 			$tmp = array();
@@ -188,7 +184,6 @@
 	}
 
 	function serverMemory_usage() {
-	 
 		$free = shell_exec('free');
 		$free = (string)trim($free);
 		$free_arr = explode("\n", $free);
