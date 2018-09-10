@@ -129,7 +129,7 @@
 			$tmp = array();
 			@exec ("sudo netstat -plan| awk {'print $5'} | cut -d: -f 1 | sort | uniq -c | sort -n", $results);
 			
-			foreach ($results as $result) {				
+			foreach ($results as $result) {
 				if (!in_array($result, $unique)) {
 					$tmp = trim($result);
 					$tmp = explode(" ", $tmp);
