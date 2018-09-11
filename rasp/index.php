@@ -31,8 +31,8 @@
 						</div>
 					</div>				
 					<div class="inline-block medidor relative">
-						<span id="w_disk_io-top" class="absolute top"></span>
-		  				<span id="w_disk_io-bot" class="absolute bot"></span>
+						<span id="ram-top" class="absolute top"></span>
+		  				<span id="ram-bot" class="absolute bot"></span>
 					</div>
 					<canvas id="ram" class="inline-block"></canvas>
 				</td>
@@ -44,8 +44,8 @@
 						</div>
 					</div>			
 					<div class="inline-block medidor relative">
-						<span id="w_disk_io-top" class="absolute top"></span>
-		  				<span id="w_disk_io-bot" class="absolute bot"></span>
+						<span id="cpu-top" class="absolute top"></span>
+		  				<span id="cpu-bot" class="absolute bot"></span>
 					</div>
 					<canvas id="cpu" class="inline-block"></canvas>
 				</td>
@@ -59,8 +59,8 @@
 						</div>
 					</div>
 					<div class="inline-block medidor relative">
-						<span id="w_disk_io-top" class="absolute top"></span>
-		  				<span id="w_disk_io-bot" class="absolute bot"></span>
+						<span id="bd-top" class="absolute top"></span>
+		  				<span id="bd-bot" class="absolute bot"></span>
 					</div>
 					<canvas id="bd_conn" class="inline-block"></canvas>
 				</td>
@@ -72,8 +72,8 @@
 						</div>
 					</div>
 					<div class="inline-block medidor relative">
-						<span id="w_disk_io-top" class="absolute top"></span>
-		  				<span id="w_disk_io-bot" class="absolute bot"></span>
+						<span id="net-top" class="absolute top"></span>
+		  				<span id="net-bot" class="absolute bot"></span>
 					</div>
 					<canvas id="server_conn" class="inline-block"></canvas>
 				</td>
@@ -142,7 +142,7 @@
 				</td>
 				<td class="section" colspan="2">
 					<div class="block section-title">
-						<div class="title">LISTA DE CONEXIONES ACTUALES EN RED</div>
+						<div class="title">LISTA DE PROCESOS ACTIVOS EN BASE DE DATOS</div>
 						<div class="section-general-data">
 							<span id="net_alert"></span>
 						</div>

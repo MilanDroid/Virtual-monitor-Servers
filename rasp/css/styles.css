@@ -43,7 +43,7 @@ canvas {
 	width: 33.33%;
 	height: 33.33%;
 	text-align: center;
-	padding: 0px;
+	padding: 10px 0px 10px 0px;
 	border: 1px solid #000;
 }
 
