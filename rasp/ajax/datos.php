@@ -148,7 +148,7 @@
 		//PARA UTILIZAR LA CLASE CONEXION CAMBIAR EL NOMBRE A 'conexion.php' Y ASEGURARSE DE HABER CAMBIADO LAS CREDENCIASLES EN LA CLAS
 		include "../class/conexion_work.php";
 		$conexion = new Conexion();
-		$data = "";
+		$data = "<tr><td>PID</td><td>USENAME</td><td>APPNAME</td><td>CLIEND_ADDR</td><td>CLIENT_PORT</td><td>TIME_START</td><td>STATE</td><td>QUERY</td></tr>";
 
 		$sql = "SELECT COUNT(*) AS cant FROM pg_stat_activity;";
 		$result = pg_query($sql);
@@ -161,8 +161,7 @@
 		FROM pg_stat_activity;";		
 		$result = pg_query($sqlInf);
 		while($row = pg_fetch_array($result)){
-			$data .= $row['pid']." - ".$row['usename']." - ".$row['application_name']." - ".$row['client_addr']." - ".$row['client_port'];
-			$data .= " - ".$row['backend_start']." - ".$row['state']."\n\n".$row['query']."\n\n";
+			$data .= "<tr><td>".$row['pid']."</td><td>".$row['usename']."</td><td>".$row['application_name']."</td><td>".$row['client_addr']."</td><td>".$row['client_port']."</td><td>".$row['backend_start']."</td><td>".$row['state']."</td><td>".$row['query']."</td></tr>";
 		}
 
 		$datos['bd_inf'] = $data;

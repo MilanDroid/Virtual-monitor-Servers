@@ -1,0 +1,120 @@
+body{
+	background-color: #000;
+	font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif; 
+	color: #FFFFFF;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+canvas {
+	width: 83%;
+	height: 75%;
+    border: 1px dotted #FFF;
+	background-color: black;
+}
+
+.relative{
+	position: relative;
+}
+
+.absolute{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+.block{
+	display: block;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.container{
+	width: 1306px;
+	height: 766px;
+	position: absolute;
+	top: 0px;
+	left: 1.8%;
+}
+
+.section{
+	width: 33.33%;
+	height: 33.33%;
+	text-align: center;
+	padding: 0px;
+	border: 1px solid #000;
+}
+
+.section-title{
+	width: 100%;
+	height: 25%;
+	font-size: 11px;
+}
+
+.title{
+	width: 85%;
+	height: 55%;
+	padding-left: 15%;
+}
+
+.section-general-data{
+	width: 85%;
+	height: 45%;
+	font-size: 9px;
+	padding-left: 15%;
+}
+
+.medidor{
+	width: 15%;
+	height: 75%;
+}
+
+.top{
+	font-size: 9px;
+	height: 9px;
+	width: 100%;
+}
+
+.bot{
+	font-size: 8px;
+	height: 8px;
+	width: 100%;
+}
+
+.container-general-report{
+	width: 85%;
+	height: 75%;
+	padding-left: 15%;
+}
+
+.table-general-report{
+	width: 100%;
+	height: 100%;
+	font-size: 10px;
+	background-color: #000000;
+}
+
+.table-data{
+	width: 65%;
+	text-align: right;
+}
+
+.container-inf-data{
+	width: 92.5%;
+	height: 75%;
+	padding-left: 7.5%;
+}
+
+.inf-data-area{
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	font-size: 9px;
+	color: #FFFFFF;
+	border: none;
+	overflow: auto;
+	background-color: #000000;
+}

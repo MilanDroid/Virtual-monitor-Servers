@@ -75,7 +75,7 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo) {
 }
 
 function calculos(array, color, lienzo, lmax, alto) {
-	if(array.length >= 88){
+	if(array.length >= 90){
 		array.pop();
 	}
 
@@ -207,7 +207,7 @@ function bdConnections_monitor(){
 			calculos(sections.bdConnections.rdata, sections.bdConnections.linea, sections.bdConnections.lienzo, sections.bdConnections.lmax, sections.bdConnections.alto);
 			$('#bd-top').html(sections.bdConnections.lmax);
 			$('#bd-bot').html(sections.bdConnections.lmin).css('margin-top',(sections.bdConnections.alto-(sections.bdConnections.lmin*sections.bdConnections.alto/sections.bdConnections.lmax))+'px');
-			$('#inf_bd_conn').val(datos.bd_inf);
+			$('#inf_bd_conn').html(datos.bd_inf);
 			/*console.log("BD_Connections: "+datos.bd_conn);*/
 		},
 		error:function(e){
@@ -237,10 +237,10 @@ function netConnections_monitor(){
 			$('#net-bot').html(sections.netConnections.lmin).css('margin-top',(sections.netConnections.alto-(sections.netConnections.lmin*sections.netConnections.alto/sections.netConnections.lmax))+'px');
 			
 			datos.inf.forEach(function(item, index, data) {
-				list += index+" -- "+item+"\n";
+				list += "<tr><td>"+index+"</td><td class='table-data'>"+item+"</td></tr>";
 			});
 
-			$('#inf_net_conn').val(list);
+			$('#inf_net_conn').html(list);
 		},
 		error:function(e){
 			console.log("Error: "+e);
