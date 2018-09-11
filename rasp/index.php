@@ -9,17 +9,20 @@
 	<table class="container">
 		<tbody>
 			<tr>
+				<td colspan="3" class="color-brand">VIRTUAL MONITOR - Be+</td>
+			</tr>
+			<tr>
 				<td class="section">
 					<div class="block section-title">
 						<div class="title">DISCO - VELOCIDAD ESCRITURA Y LECTURA</div>
 						<div class="section-general-data">
-							<span id="w_disk_io"></span>
+							<span id="w_disk_io"></span>&emsp;
 		  					<span id="r_disk_io"></span>
 						</div>
 					</div>					
 					<div class="inline-block medidor relative">						
-		  				<span id="w_disk_io-top" class="absolute top"></span>
-		  				<span id="w_disk_io-bot" class="absolute bot"></span>
+		  				<span id="w_disk_io-top" class="top"></span>
+		  				<span id="w_disk_io-bot" class="bot"></span>
 					</div>
 					<canvas id="disk_io" class="inline-block"></canvas>
 				</td>
@@ -31,8 +34,8 @@
 						</div>
 					</div>				
 					<div class="inline-block medidor relative">
-						<span id="ram-top" class="absolute top"></span>
-		  				<span id="ram-bot" class="absolute bot"></span>
+						<span id="ram-top" class="top"></span>
+		  				<span id="ram-bot" class="bot"></span>
 					</div>
 					<canvas id="ram" class="inline-block"></canvas>
 				</td>
@@ -44,8 +47,8 @@
 						</div>
 					</div>			
 					<div class="inline-block medidor relative">
-						<span id="cpu-top" class="absolute top"></span>
-		  				<span id="cpu-bot" class="absolute bot"></span>
+						<span id="cpu-top" class="top"></span>
+		  				<span id="cpu-bot" class="bot"></span>
 					</div>
 					<canvas id="cpu" class="inline-block"></canvas>
 				</td>
@@ -59,8 +62,8 @@
 						</div>
 					</div>
 					<div class="inline-block medidor relative">
-						<span id="bd-top" class="absolute top"></span>
-		  				<span id="bd-bot" class="absolute bot"></span>
+						<span id="bd-top" class="top"></span>
+		  				<span id="bd-bot" class="bot"></span>
 					</div>
 					<canvas id="bd_conn" class="inline-block"></canvas>
 				</td>
@@ -72,8 +75,8 @@
 						</div>
 					</div>
 					<div class="inline-block medidor relative">
-						<span id="net-top" class="absolute top"></span>
-		  				<span id="net-bot" class="absolute bot"></span>
+						<span id="net-top" class="top"></span>
+		  				<span id="net-bot" class="bot"></span>
 					</div>
 					<canvas id="server_conn" class="inline-block"></canvas>
 				</td>
@@ -87,35 +90,35 @@
 					<div class="inline-block container-general-report">
 						<table class="table-general-report">
 							<tbody>
-								<tr align="left">
+								<tr align="left" id="uptime_data">
 			  						<td>Uptime: </td>
 			  						<td class="table-data"><span id="uptime"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="average_data">
 			  						<td>CPU AVERAGE: </td>
 									<td class="table-data"><span id="cpu_load"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="mem_apache_data">
 			  						<td>Uso de memoria APACHE: </td>
 			  						<td class="table-data"><span id="usage_ram"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="hdd_data">
 			 						<td>Uso HDD: </td>
 			 						<td class="table-data"><span id="usage_hdd"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="cpu_data">
 			  						<td>Alertas CPU: </td>
 			  						<td class="table-data"><span id="alert_cpu">0</span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="ram_data">
 			  						<td>Alertas RAM: </td>
 			  						<td class="table-data"><span id="alert_ram">0</span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="net_data">
 			  						<td>Maximo conexiones red: </td>
 			  						<td class="table-data"><span id="max_http">0</span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="bd_data">
 			  						<td>Maximo conexiones BD: </td>
 			  						<td class="table-data"><span id="max_bd">0</span></td>
 								</tr>
@@ -129,30 +132,23 @@
 					<div class="block section-title">
 						<div class="title">LISTA DE CONEXIONES ACTUALES EN RED</div>
 						<div class="section-general-data">
-							<span id="net_alert"></span>
+							<span id="tot_net"></span>
 						</div>
 					</div>
-					<div class="container-inf-data">
-						<div class="inf-data-area">
-							<table class="table-general-report">
-								<tbody id="inf_net_conn"></tbody>
-							</table>
-						</div>
+					<div class="container-data-area">
+						<table class="table-general-report">
+							<tbody id="inf_net_conn"></tbody>
+						</table>
 					</div>
 				</td>
 				<td class="section" colspan="2">
 					<div class="block section-title">
 						<div class="title">LISTA DE PROCESOS ACTIVOS EN BASE DE DATOS</div>
-						<div class="section-general-data">
-							<span id="net_alert"></span>
-						</div>
 					</div>
-					<div class="container-inf-data">
-						<div class="inf-data-area">
-							<table class="table-general-report" wrap="off">
-								<tbody id="inf_bd_conn"></tbody>
-							</table>
-						</div>
+					<div class="container-data-area">
+						<table class="table-general-report">
+							<tbody id="inf_bd_conn"></tbody>
+						</table>
 					</div>
 				</td>
 			</tr>

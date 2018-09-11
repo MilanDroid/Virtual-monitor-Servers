@@ -127,18 +127,21 @@
 		if (function_exists('exec')) {
 			$unique = array();
 			$tmp = array();
-			@exec ("sudo netstat -plan| awk {'print $5'} | cut -d: -f 1 | sort | uniq -c | sort -n", $results);
-			
+			$sum = 0;
+			@exec ("sudo netstat -anp |grep 'ESTABLISHED' | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n", $results);
+			//netstat -plan| awk {'print $5'} | cut -d: -f 1 | sort | uniq -c | sort -n
 			foreach ($results as $result) {
 				if (!in_array($result, $unique)) {
 					$tmp = trim($result);
 					$tmp = explode(" ", $tmp);
-					$unique[] = end($tmp);
+					$unique[] = end($tmp)."\t-\t".$tmp[0];
+					$sum += $tmp[0];
 				}
 			}
 
 			$datos['net_conn'] = count($unique);
 			$datos['inf'] = $unique;
+			$datos['sum'] = $sum;
 
 			echo json_encode($datos);
 		}
@@ -148,7 +151,8 @@
 		//PARA UTILIZAR LA CLASE CONEXION CAMBIAR EL NOMBRE A 'conexion.php' Y ASEGURARSE DE HABER CAMBIADO LAS CREDENCIASLES EN LA CLAS
 		include "../class/conexion_work.php";
 		$conexion = new Conexion();
-		$data = "<tr><td>PID</td><td>USENAME</td><td>APPNAME</td><td>CLIEND_ADDR</td><td>CLIENT_PORT</td><td>TIME_START</td><td>STATE</td><td>QUERY</td></tr>";
+		
+		$data = "<tr><td>PID</td><td>USENAME</td><td>APPNAME</td><td>CLIEND_ADDR</td><td>CLIENT_PORT</td><td>TIME_START</td><td>QUERY</td></tr>";
 
 		$sql = "SELECT COUNT(*) AS cant FROM pg_stat_activity;";
 		$result = pg_query($sql);
@@ -156,12 +160,12 @@
 
 		$datos['bd_conn'] = $result['cant'];
 
-		$sqlInf = "SELECT pid, usename, application_name, client_addr,
-		client_port, backend_start, state, query
+		$sqlInf = "SELECT procpid AS pid, usename, application_name, client_addr,
+		client_port, backend_start, current_query AS query
 		FROM pg_stat_activity;";		
-		$result = pg_query($sqlInf);
+		$result = pg_query($sqlInf) or die(pg_last_error());
 		while($row = pg_fetch_array($result)){
-			$data .= "<tr><td>".$row['pid']."</td><td>".$row['usename']."</td><td>".$row['application_name']."</td><td>".$row['client_addr']."</td><td>".$row['client_port']."</td><td>".$row['backend_start']."</td><td>".$row['state']."</td><td>".$row['query']."</td></tr>";
+			$data .= "<tr><td>".$row['pid']."</td><td>".$row['usename']."</td><td>".$row['application_name']."</td><td>".$row['client_addr']."</td><td>".$row['client_port']."</td><td>".$row['backend_start']."</td><td class='query-column'>".$row['query']."</td></tr>";
 		}
 
 		$datos['bd_inf'] = $data;
