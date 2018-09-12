@@ -24,6 +24,9 @@
 	        unset($cmd);
 	}
 
+<<<<<<< HEAD
+=======
+	/*EXTRAS
 	function systemCores() {
 	    $cmd = "uname";
 	    $OS = strtolower(trim(shell_exec($cmd)));
@@ -59,20 +62,22 @@
 		}
 		
 		return $proc_count;	
-	}
+	}*/
 
+>>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
 	function serverUptime (){
+		$time = array();
 		$str   = file_get_contents('/proc/uptime');
 		$num   = floatval($str);
-		$secs  = round(fmod($num, 60), 0); 
+		$time[]  = round(fmod($num, 60), 0); 
 		$num = round($num/60, 2);
-		$mins  = $num % 60;
+		$time[]  = $num % 60;
 		$num = round($num/60, 2);
-		$hours = $num % 24;
+		$time[] = $num % 24;
 		$num = round($num/24, 0);
-		$days  = $num;
+		$time[]  = $num;
 
-		return $days." Dias, ".$hours." hr:".$mins." min:".$secs." seg";
+		return $time;
 	}
 
 	function memoryUsage() {
@@ -101,9 +106,11 @@
 		/*if ($load[0] > 0.80) {
 		    header('HTTP/1.1 503 Too busy, try again later');
 		    //die('Server too busy. Please try again later.');
-		}*/
+		}
+		return $load[0]."-".$load[1]."-".$load[2];
+		*/
 
-		return $load[0]." - ".$load[1]." - ".$load[2];
+		return $load;
 	}
 
 	function diskUsage() {
@@ -160,8 +167,15 @@
 
 		$datos['bd_conn'] = $result['cant'];
 
+		//PARA EXTRAER EL TIEMPO QUE LLEVA LEVANTADO EL QUERY
+		/*EXTRACT('epoch' FROM NOW() - backend_start) AS dif*/
+<<<<<<< HEAD
 		$sqlInf = "SELECT procpid AS pid, usename, application_name, client_addr,
 		client_port, backend_start, current_query AS query
+=======
+		$sqlInf = "SELECT pid AS /*proc*/pid, usename, application_name, client_addr,
+		client_port, backend_start, /*current_*/query AS query
+>>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
 		FROM pg_stat_activity;";		
 		$result = pg_query($sqlInf) or die(pg_last_error());
 		while($row = pg_fetch_array($result)){
