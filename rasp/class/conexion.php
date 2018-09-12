@@ -2,10 +2,10 @@
 
 	class Conexion{
 
-		private $user="postgres";
-		private $pass="postgres";
-		private $host="localhost";
-		private $dataBase="VOGUE_ERP-BD-2018-02-28";
+		private $user="";//INGRESAR INFORMACION DE LA BASE DE DATOS. USUARIO, CLAVE, IP, NOMBRE DB
+		private $pass="";
+		private $host="";
+		private $dataBase="";
 		private $dbconn;
 
 		public function __construct(){
