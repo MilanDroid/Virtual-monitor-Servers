@@ -24,6 +24,7 @@
 	        unset($cmd);
 	}
 
+	/*EXTRAS
 	function systemCores() {
 	    $cmd = "uname";
 	    $OS = strtolower(trim(shell_exec($cmd)));
@@ -59,7 +60,7 @@
 		}
 		
 		return $proc_count;	
-	}
+	}*/
 
 	function serverUptime (){
 		$time = array();
