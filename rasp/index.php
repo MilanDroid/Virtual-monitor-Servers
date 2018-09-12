@@ -1,8 +1,3 @@
-
-<!-- 
-	VIRTUAL MONITOR, By Be+. IF YOU WANT ADD OR EDIT SOMETHING VISIT https://github.com/MilanDroid/VMON AND MAKE A PULL REQUEST
-	Be great and  code your world.
--->
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,31 +54,31 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="section">
-          <div class="block section-title">
-            <div class="title">RED - CONEXIONES</div>
-            <div class="section-general-data">
-              <span id="net_act"></span>
-            </div>
-          </div>
-          <div class="inline-block medidor relative">
-            <span id="net-top" class="top"></span>
-              <span id="net-bot" class="bot"></span>
-          </div>
-          <canvas id="server_conn" class="inline-block"></canvas>
+				<td class="section">					
+					<div class="block section-title">
+						<div class="title">BD - CONEXIONES</div>
+						<div class="section-general-data">
+							<span id="bd_act"></span>
+						</div>
+					</div>
+					<div class="inline-block medidor relative">
+						<span id="bd-top" class="top"></span>
+		  				<span id="bd-bot" class="bot"></span>
+					</div>
+					<canvas id="bd_conn" class="inline-block"></canvas>
 				</td>
 				<td class="section">
-          <div class="block section-title">
-            <div class="title">BD - CONEXIONES</div>
-            <div class="section-general-data">
-              <span id="bd_act"></span>
-            </div>
-          </div>
-          <div class="inline-block medidor relative">
-            <span id="bd-top" class="top"></span>
-              <span id="bd-bot" class="bot"></span>
-          </div>
-          <canvas id="bd_conn" class="inline-block"></canvas>
+					<div class="block section-title">
+						<div class="title">RED - CONEXIONES</div>
+						<div class="section-general-data">
+							<span id="net_act"></span>
+						</div>
+					</div>
+					<div class="inline-block medidor relative">
+						<span id="net-top" class="top"></span>
+		  				<span id="net-bot" class="bot"></span>
+					</div>
+					<canvas id="server_conn" class="inline-block"></canvas>
 				</td>
 				<td class="section">
 					<div class="block section-title">
@@ -97,45 +92,35 @@
 							<tbody>
 								<tr align="left" id="uptime_data">
 			  						<td>Uptime: </td>
-			  						<td class="table-data" colspan="3"><span id="uptime"></span></td>
+			  						<td class="table-data"><span id="uptime"></span></td>
 			  					</tr>
 			  					<tr align="left" id="average_data">
 			  						<td>CPU AVERAGE: </td>
-									<td class="table-data" colspan="3"><span id="cpu_load"></span></td>
+									<td class="table-data"><span id="cpu_load"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="mem_apache_data">
 			  						<td>Uso de memoria APACHE: </td>
-			  						<td class="table-data" colspan="3"><span id="usage_ram"></span></td>
+			  						<td class="table-data"><span id="usage_ram"></span></td>
 			  					</tr>
 			  					<tr align="left" id="hdd_data">
-			 						  <td>Uso HDD: </td>
-			 						  <td class="table-data-alerts"><span id="usage_hdd"></span></td>
-                    <td>MAX W-R: </td>
-                    <td class="table-data-min"><span id="max_disk">0</span></td>
+			 						<td>Uso HDD: </td>
+			 						<td class="table-data"><span id="usage_hdd"></span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="cpu_data">
 			  						<td>Alertas CPU: </td>
-			  						<td class="table-data-alerts"><span id="alert_cpu">0</span></td>
-                    <td>MAX CPU: </td>
-                    <td class="table-data-min"><span id="max_cpu">0</span></td>
+			  						<td class="table-data"><span id="alert_cpu">0</span></td>
 			  					</tr>
-			  					<tr align="left">
+			  					<tr align="left" id="ram_data">
 			  						<td>Alertas RAM: </td>
-			  						<td class="table-data-alerts"><span id="alert_ram">0</span></td>
-                    <td>Max RAM: </td>
-                    <td class="table-data-min"><span id="max_ram">0</span></td>
+			  						<td class="table-data"><span id="alert_ram">0</span></td>
 			  					</tr>
-			  					<tr align="left">
-                    <td>Alertas NET: </td>
-                    <td class="table-data-alerts"><span id="alert_net">0</span></td>
-			  						<td>Maximo net: </td>
-			  						<td class="table-data-min"><span id="max_http">0</span></td>
+			  					<tr align="left" id="net_data">
+			  						<td>Maximo conexiones red: </td>
+			  						<td class="table-data"><span id="max_http">0</span></td>
 			  					</tr>
-			  					<tr align="left">
-                    <td>Alertas BD: </td>
-                    <td class="table-data-alerts"><span id="alert_bd">0</span></td>
-			  						<td>Maximo bd: </td>
-			  						<td class="table-data-min"><span id="max_bd">0</span></td>
+			  					<tr align="left" id="bd_data">
+			  						<td>Maximo conexiones BD: </td>
+			  						<td class="table-data"><span id="max_bd">0</span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -150,7 +135,7 @@
 							<span id="tot_net"></span>
 						</div>
 					</div>
-					<div class="container-data-area-s">
+					<div class="container-data-area">
 						<table class="table-general-report">
 							<tbody id="inf_net_conn"></tbody>
 						</table>

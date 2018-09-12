@@ -111,34 +111,12 @@ canvas {
 	text-align: right;
 }
 
-.table-data-alerts{
-	width: 10%;
-	padding-right: 10%;
-	text-align: right;
-}
-
-.table-data-min{
-	width: 25%;
-	text-align: right;
-}
-
 .container-data-area{
 	width: 92.5%;
 	max-width: 92.5%;
 	height: 75%;
 	max-height: 75%;
 	padding-left: 7.5%;
-	font-size: 9px;
-	color: #FFFFFF;
-	border: none;
-	overflow: auto;
-	background-color: #000000;
-}
-
-.container-data-area-s{
-	width: 100%;
-	height: 75%;
-	max-height: 75%;
 	font-size: 9px;
 	color: #FFFFFF;
 	border: none;
@@ -155,41 +133,22 @@ canvas {
 }
 
 .alert-red{
-	padding: 5px 20px 5px 20px;
-	animation: alerta-roja 1s;
-	-webkit-animation: alerta-roja 1s;
-	-moz-animation: alerta-roja 1s;
+	background-color: red;
+	padding: 5px 20px 5px 20px;text-decoration: blink;
+	animation: parpadeo 1s;
+	-webkit-animation: parpadeo 1s;
+	-moz-animation: parpadeo 1s;
 	animation-iteration-count:infinite;
 	-webkit-animation-iteration-count:infinite;
 	-moz-animation-iteration-count:infinite;
 }
 
-@keyframes alerta-roja {
+@keyframes parpadeo {
 0% {background-color: white}
 100%{background-color: red}
 }
 
-@-webkit-keyframes alerta-roja {
+@-webkit-keyframes parpadeo {
 0% {background-color: white}
 100%{background-color: red}
-}
-
-.alert-blue{
-	padding: 5px 20px 5px 20px;
-	animation: alerta-azul 1s;
-	-webkit-animation: alerta-azul 1s;
-	-moz-animation: alerta-azul 1s;
-	animation-iteration-count:infinite;
-	-webkit-animation-iteration-count:infinite;
-	-moz-animation-iteration-count:infinite;
-}
-
-@keyframes alerta-azul{
-	0% {background-color: white}
-	100%{background-color: #2982c6}
-}
-
-@-webkit-keyframes alerta-azul{
-	0% {background-color: white}
-	100%{background-color: #2982c6}
 }

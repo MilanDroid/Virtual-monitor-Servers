@@ -24,19 +24,55 @@
 	        unset($cmd);
 	}
 
+	function systemCores() {
+	    $cmd = "uname";
+	    $OS = strtolower(trim(shell_exec($cmd)));
+	 
+	    switch($OS) {
+	       case('linux'):
+	          $cmd = "cat /proc/cpuinfo | grep processor | wc -l";
+	          break;
+	       case('freebsd'):
+	          $cmd = "sysctl -a | grep 'hw.ncpu' | cut -d ':' -f2";
+	          break;
+	       default:
+	          unset($cmd);
+	    }
+	 
+	    if ($cmd != '') {
+	       $cpuCoreNo = intval(trim(shell_exec($cmd)));
+	    }
+	    
+	    return empty($cpuCoreNo) ? 1 : $cpuCoreNo;
+	}
+
+	function numberProcesses() {
+		$proc_count = 0;
+		$dh = opendir('/proc');
+		
+		while ($dir = readdir($dh)) {
+			if (is_dir('/proc/' . $dir)) {
+				if (preg_match('/^[0-9]+$/', $dir)) {
+					$proc_count ++;
+				}
+			}
+		}
+		
+		return $proc_count;	
+	}
+
 	function serverUptime (){
-		$time = array();
 		$str   = file_get_contents('/proc/uptime');
 		$num   = floatval($str);
-		$time[]  = round(fmod($num, 60), 0); 
+		$secs  = round(fmod($num, 60), 0); 
 		$num = round($num/60, 2);
-		$time[]  = $num % 60;
+		$mins  = $num % 60;
 		$num = round($num/60, 2);
-		$time[] = $num % 24;
+		$hours = $num % 24;
 		$num = round($num/24, 0);
-		$time[]  = $num;
+		$days  = $num;
 
-		return $time;
+		return $days." Dias, ".$hours." hr:".$mins." min:".$secs." seg";
 	}
 
 	function memoryUsage() {
@@ -65,11 +101,9 @@
 		/*if ($load[0] > 0.80) {
 		    header('HTTP/1.1 503 Too busy, try again later');
 		    //die('Server too busy. Please try again later.');
-		}
-		return $load[0]."-".$load[1]."-".$load[2];
-		*/
+		}*/
 
-		return $load;
+		return $load[0]." - ".$load[1]." - ".$load[2];
 	}
 
 	function diskUsage() {
@@ -126,8 +160,6 @@
 
 		$datos['bd_conn'] = $result['cant'];
 
-		//PARA EXTRAER EL TIEMPO QUE LLEVA LEVANTADO EL QUERY
-		/*EXTRACT('epoch' FROM NOW() - backend_start) AS dif*/
 		$sqlInf = "SELECT procpid AS pid, usename, application_name, client_addr,
 		client_port, backend_start, current_query AS query
 		FROM pg_stat_activity;";		
