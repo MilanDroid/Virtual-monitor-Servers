@@ -64,7 +64,18 @@ var sections = {
 };
 
 var alerts = {
-
+	cpu_act: 0,
+	ram_act: 0,
+	r_disk_io: 0,
+	w_disk_io: 0,
+	net_act: 0,
+	bd_act: 0,
+	max_cpu: 0,
+	max_ram: 0,
+	max_net: 0,
+	max_bd: 0,
+	max_w: 0,
+	max_r: 0
 };
 
 function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo, line) {
@@ -97,8 +108,9 @@ function calculos(array, color, lienzo, lmax, alto) {
 function alerta(limit, value, object){
 	if(value > limit){
 		$('#'+object).addClass('alert-red');
+		alerts[object] += 1;
 	}
-	else{
+	else if($('#'+object).hasClass('alert-red')){
 		$('#'+object).removeClass('alert-red');
 	}
 }
@@ -143,10 +155,10 @@ function diskIo_monitor() {
 			$('#w_disk_io-top').html(parseFloat(sections.diskIo.lmax).toFixed(2)+"Kb/s");
 			$('#w_disk_io-bot').html(parseFloat(sections.diskIo.lmin).toFixed(2)+"Kb/s").css('margin-top',(sections.diskIo.alto-(sections.diskIo.lmin*sections.diskIo.alto/sections.diskIo.lmax))+'px');
 
+			if(alerts.max_w < datos.d_write){alerts.max_w = datos.d_write;}
+			if(alerts.max_r < datos.d_read){alerts.max_r = datos.d_read;}
 			alerta(7000, datos.d_write, 'w_disk_io');
 			alerta(2000, datos.d_read, 'r_disk_io');
-
-			/*console.log("DISK W: "+datos.d_write+"\n"+"DISK R: "+datos.d_read);*/
 		},
 		error:function(e){
 			console.log("Error: "+e);
@@ -174,8 +186,8 @@ function ramUsage_monitor(){
 			//EN ESTA PARTE 'sections.ram.alto+5' SE LE SUMA 5 PARA QUE NUNCA QUEDEN EN EL MISMO LUGAR EL TOP Y EL BOT
 			$('#ram-bot').html(sections.ram.lmin+"%").css('margin-top',((100+2-sections.ram.lmin)/100)*sections.ram.alto+'px');
 			
+			if(alerts.max_ram < datos.memory){alerts.max_ram = datos.memory;}
 			alerta(50, datos.memory, 'ram_act');
-			/*console.log("RAM: "+datos.memory);*/
 		},
 		error:function(e){
 			console.log("Error: "+e);
@@ -202,9 +214,8 @@ function cpu_monitor(){
 			$('#cpu-top').html(parseFloat(sections.cpuPercent.lmax).toFixed(2)+"%").css('margin-top',((100-sections.cpuPercent.lmax)*sections.cpuPercent.alto)/100+'px');
 			$('#cpu-bot').html(sections.cpuPercent.lmin+"%").css('margin-top',((100-sections.cpuPercent.lmin)/100)*sections.cpuPercent.alto+'px');
 			
+			if(alerts.max_cpu < datos.load){alerts.max_cpu = datos.load;}
 			alerta(60, datos.load, 'cpu_act');
-
-			/*console.log("CPU%: "+datos.load);*/
 		},
 		error:function(e){
 			console.log("Error: "+e);
@@ -231,9 +242,8 @@ function bdConnections_monitor(){
 			$('#bd-bot').html(sections.bdConnections.lmin).css('margin-top',(sections.bdConnections.alto-(sections.bdConnections.lmin*sections.bdConnections.alto/sections.bdConnections.lmax))+'px');
 			$('#inf_bd_conn').html(datos.bd_inf);
 
+			if(alerts.max_bd < datos.bd_conn){alerts.max_bd = datos.bd_conn;}
 			alerta(25, datos.bd_conn, 'bd_act');
-
-			/*console.log("BD_Connections: "+datos.bd_conn);*/
 		},
 		error:function(e){
 			console.log("Error: "+e);
@@ -266,6 +276,7 @@ function netConnections_monitor(){
 				list += "<tr><td>"+index+"</td><td class='table-data'>"+item+"</td></tr>";
 			});
 
+			if(alerts.max_net < datos.net_conn){alerts.max_net = datos.net_conn;}
 			$('#inf_net_conn').html(list);
 			alerta(100, datos.net_conn, 'net_act');
 		},
@@ -282,11 +293,43 @@ function staticInf_monitor(){
 		data: ({tipo: 'stat_inf'}),
 		dataType: "json",
 		success:function(datos){
-			$('#uptime').html(datos.time);
-			$('#cpu_load').html(datos.load);
+			$('#uptime').html(datos.time[3]+" Dias "+datos.time[2]+" hr "+datos.time[1]+" min "+datos.time[0]+" seg");
+
+			if(datos.time[1] < 30 && datos.time[2] == 0 && datos.time[3] == 0){
+				$('#uptime_data').addClass('alert-blue');
+			}
+			else if($('#uptime_data').hasClass('alert-blue')){
+				$('#uptime_data').removeClass('alert-blue');
+			}
+
+			$('#cpu_load').html(datos.load[0]+" - "+datos.load[1]+" - "+datos.load[2]);
+
+			if(datos.load[0] > 2){
+				$('#average_data').addClass('alert-red');
+			}
+			else if($('#average_data').hasClass('alert-red')){
+				$('#average_data').removeClass('alert-red');
+			}
+
 			$('#usage_ram').html(datos.memory);
 			$('#usage_hdd').html(datos.disk);
-			/*console.log("Net_Connections: "+datos.net_conn);*/
+
+			if(datos.disk > 75){
+				$('#hdd_data').addClass('alert-red');
+			}
+			else if($('#hdd_data').hasClass('alert-red')){
+				$('#hdd_data').removeClass('alert-red');
+			}
+
+			$('#max_disk').html(alerts.max_w+" - "+alerts.max_r);
+			$('#alert_cpu').html(alerts.cpu_act);
+			$('#max_cpu').html(alerts.max_cpu);
+			$('#alert_ram').html(alerts.ram_act);
+			$('#max_ram').html(alerts.max_ram);
+			$('#alert_net').html(alerts.net_act);
+			$('#max_http').html(alerts.max_net);
+			$('#alert_bd').html(alerts.bd_act);
+			$('#max_bd').html(alerts.max_bd);
 		},
 		error:function(e){
 			console.log("Error: "+e);
