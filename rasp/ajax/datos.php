@@ -24,47 +24,6 @@
 	        unset($cmd);
 	}
 
-<<<<<<< HEAD
-=======
-	/*EXTRAS
-	function systemCores() {
-	    $cmd = "uname";
-	    $OS = strtolower(trim(shell_exec($cmd)));
-	 
-	    switch($OS) {
-	       case('linux'):
-	          $cmd = "cat /proc/cpuinfo | grep processor | wc -l";
-	          break;
-	       case('freebsd'):
-	          $cmd = "sysctl -a | grep 'hw.ncpu' | cut -d ':' -f2";
-	          break;
-	       default:
-	          unset($cmd);
-	    }
-	 
-	    if ($cmd != '') {
-	       $cpuCoreNo = intval(trim(shell_exec($cmd)));
-	    }
-	    
-	    return empty($cpuCoreNo) ? 1 : $cpuCoreNo;
-	}
-
-	function numberProcesses() {
-		$proc_count = 0;
-		$dh = opendir('/proc');
-		
-		while ($dir = readdir($dh)) {
-			if (is_dir('/proc/' . $dir)) {
-				if (preg_match('/^[0-9]+$/', $dir)) {
-					$proc_count ++;
-				}
-			}
-		}
-		
-		return $proc_count;	
-	}*/
-
->>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
 	function serverUptime (){
 		$time = array();
 		$str   = file_get_contents('/proc/uptime');
@@ -169,13 +128,8 @@
 
 		//PARA EXTRAER EL TIEMPO QUE LLEVA LEVANTADO EL QUERY
 		/*EXTRACT('epoch' FROM NOW() - backend_start) AS dif*/
-<<<<<<< HEAD
 		$sqlInf = "SELECT procpid AS pid, usename, application_name, client_addr,
 		client_port, backend_start, current_query AS query
-=======
-		$sqlInf = "SELECT pid AS /*proc*/pid, usename, application_name, client_addr,
-		client_port, backend_start, /*current_*/query AS query
->>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
 		FROM pg_stat_activity;";		
 		$result = pg_query($sqlInf) or die(pg_last_error());
 		while($row = pg_fetch_array($result)){
