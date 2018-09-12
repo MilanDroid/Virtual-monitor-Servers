@@ -1,0 +1,184 @@
+body{
+	background-color: #000;
+	font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif; 
+	color: #FFFFFF;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+canvas {
+	width: 83%;
+	height: 75%;
+    border: 1px dotted #FFF;
+	background-color: black;
+}
+
+.relative{
+	position: relative;
+}
+
+.absolute{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+.block{
+	display: block;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.container{
+	width: 1306px;
+	height: 766px;
+	position: absolute;
+	top: 0px;
+	left: 1.8%;
+}
+
+.section{
+	max-width: 433px;
+	height: 220px;
+	text-align: center;
+	padding: 20px 0px 0px 0px;
+	border: 1px solid #000;
+}
+
+.section-title{
+	width: 100%;
+	height: 25%;
+	font-size: 11px;
+}
+
+.title{
+	width: 85%;
+	height: 55%;
+	padding-left: 15%;
+}
+
+.section-general-data{
+	width: 85%;
+	height: 45%;
+	font-size: 9px;
+	padding-left: 15%;
+}
+
+.medidor{
+	width: 15%;
+	height: 75%;
+}
+
+.top{
+	font-size: 9px;
+	height: 9px;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+}
+
+.bot{
+	font-size: 8px;
+	height: 8px;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+}
+
+.container-general-report{
+	width: 85%;
+	height: 75%;
+	padding-left: 15%;
+}
+
+.table-general-report{
+	width: 100%;
+	height: 100%;
+	font-size: 10px;
+	background-color: #000000;
+}
+
+.query-column{
+	max-width: 50%;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.table-data{
+	width: 65%;
+	text-align: right;
+}
+
+.table-data-alerts{
+	width: 10%;
+	padding-right: 10%;
+	text-align: right;
+}
+
+.table-data-min{
+	width: 25%;
+	text-align: right;
+}
+
+.container-data-area{
+	width: 92.5%;
+	max-width: 92.5%;
+	height: 75%;
+	max-height: 75%;
+	padding-left: 7.5%;
+	font-size: 9px;
+	color: #FFFFFF;
+	border: none;
+	overflow: auto;
+	background-color: #000000;
+}
+
+.color-brand{
+	width: 100%;
+	height: 20px;
+	font-size: 13px;
+	text-align: center;
+	background-color: #BB373A;
+}
+
+.alert-red{
+	padding: 5px 20px 5px 20px;
+	animation: alerta-roja 1s;
+	-webkit-animation: alerta-roja 1s;
+	-moz-animation: alerta-roja 1s;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+}
+
+@keyframes alerta-roja {
+0% {background-color: white}
+100%{background-color: red}
+}
+
+@-webkit-keyframes alerta-roja {
+0% {background-color: white}
+100%{background-color: red}
+}
+
+.alert-blue{
+	padding: 5px 20px 5px 20px;
+	animation: alerta-azul 1s;
+	-webkit-animation: alerta-azul 1s;
+	-moz-animation: alerta-azul 1s;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+}
+
+@keyframes alerta-azul{
+	0% {background-color: white}
+	100%{background-color: cyan}
+}
+
+@-webkit-keyframes alerta-azul{
+	0% {background-color: white}
+	100%{background-color: cyan}
+}
