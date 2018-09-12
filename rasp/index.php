@@ -145,7 +145,7 @@
 							<span id="tot_net"></span>
 						</div>
 					</div>
-					<div class="container-data-area">
+					<div class="container-data-area-s">
 						<table class="table-general-report">
 							<tbody id="inf_net_conn"></tbody>
 						</table>
