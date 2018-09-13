@@ -130,7 +130,8 @@
 		/*EXTRACT('epoch' FROM NOW() - backend_start) AS dif*/
 		$sqlInf = "SELECT procpid AS pid, usename, application_name, client_addr,
 		client_port, backend_start, current_query AS query
-		FROM pg_stat_activity;";		
+		FROM pg_stat_activity
+		ORDER BY backend_start ASC;";		
 		$result = pg_query($sqlInf) or die(pg_last_error());
 		while($row = pg_fetch_array($result)){
 			$data .= "<tr><td>".$row['pid']."</td><td>".$row['usename']."</td><td>".$row['application_name']."</td><td>".$row['client_addr']."</td><td>".$row['client_port']."</td><td>".$row['backend_start']."</td><td class='query-column'>".$row['query']."</td></tr>";

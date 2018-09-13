@@ -32,11 +32,8 @@ canvas {
 }
 
 .container{
-	width: 1306px;
+	width: 100%;
 	height: 766px;
-	position: absolute;
-	top: 0px;
-	left: 1.8%;
 }
 
 .section{
@@ -49,7 +46,7 @@ canvas {
 
 .section-title{
 	width: 100%;
-	height: 25%;
+	height: 20%;
 	font-size: 11px;
 }
 
@@ -186,18 +183,12 @@ canvas {
 
 @keyframes alerta-azul{
 	0% {background-color: white}
-<<<<<<< HEAD
 	100%{background-color: #2982c6}
-=======
-	100%{background-color: cyan}
->>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
+	100%{background-color: #3681f9}
 }
 
 @-webkit-keyframes alerta-azul{
 	0% {background-color: white}
-<<<<<<< HEAD
 	100%{background-color: #2982c6}
-=======
-	100%{background-color: cyan}
->>>>>>> e46d55fcbd23b3bfd9becabbd131ffa81cf707cb
+	100%{background-color: #3681f9}
 }

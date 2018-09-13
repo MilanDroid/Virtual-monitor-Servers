@@ -304,7 +304,7 @@ function staticInf_monitor(){
 
 			$('#cpu_load').html(datos.load[0]+" - "+datos.load[1]+" - "+datos.load[2]);
 
-			if(datos.load[0] > 2){
+			if(datos.load[0] > 3){
 				$('#average_data').addClass('alert-red');
 			}
 			else if($('#average_data').hasClass('alert-red')){
