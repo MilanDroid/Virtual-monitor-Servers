@@ -105,13 +105,7 @@
 
 				$tmp = shell_exec("geoiplookup ".end($tmp));
 				$tmp = explode(":", $tmp);
-				if(stristr($tmp[1], "192.168") === FALSE) {
-				    $ip .= "<td  align='right'>".$tmp[1]."</td></tr>";
-				}
-				else{
-					$ip .= "<td  align='right'>HN, VOGUE CORP</td></tr>";
-				}
-				
+				$ip .= "<td  align='right'>".$tmp[1]."</td></tr>";				
 			}
 
 			$datos['net_conn'] = count($results);
