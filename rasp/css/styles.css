@@ -133,9 +133,10 @@ canvas {
 }
 
 .container-data-area-s{
-	width: 100%;
+	width: 85%;
 	height: 75%;
 	max-height: 75%;
+	padding-left: 15%;
 	font-size: 9px;
 	color: #FFFFFF;
 	border: none;

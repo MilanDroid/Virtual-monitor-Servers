@@ -90,7 +90,7 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo, line) {
 }
 
 function calculos(array, color, lienzo, lmax, alto) {
-	if(array.length >= 75){
+	if(array.length >= 76){
 		array.pop();
 	}
 
@@ -258,8 +258,6 @@ function netConnections_monitor(){
 		data: ({tipo: 'net_conn'}),
 		dataType: "json",
 		success:function(datos){
-			var list = "";
-
 			sections.netConnections.rdata.unshift(datos.net_conn);
 			sections.netConnections.lmax = Math.max(...sections.netConnections.rdata);
 			sections.netConnections.lmin = Math.min(...sections.netConnections.rdata);
@@ -272,12 +270,8 @@ function netConnections_monitor(){
 			$('#net-top').html(sections.netConnections.lmax);
 			$('#net-bot').html(sections.netConnections.lmin).css('margin-top',(sections.netConnections.alto-(sections.netConnections.lmin*sections.netConnections.alto/sections.netConnections.lmax))+'px');
 			
-			datos.inf.forEach(function(item, index, data) {
-				list += "<tr><td>"+index+"</td><td class='table-data'>"+item+"</td></tr>";
-			});
-
 			if(alerts.max_net < datos.net_conn){alerts.max_net = datos.net_conn;}
-			$('#inf_net_conn').html(list);
+			$('#inf_net_conn').html(datos.inf);
 			alerta(100, datos.net_conn, 'net_act');
 		},
 		error:function(e){

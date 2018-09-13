@@ -91,22 +91,31 @@
 
 	function networkConnections() {
 		if (function_exists('exec')) {
-			$unique = array();
 			$tmp = array();
+			$ip = "";
 			$sum = 0;
+
 			@exec ("sudo netstat -anp |grep 'ESTABLISHED' | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n", $results);
 			//netstat -plan| awk {'print $5'} | cut -d: -f 1 | sort | uniq -c | sort -n
 			foreach ($results as $result) {
-				if (!in_array($result, $unique)) {
-					$tmp = trim($result);
-					$tmp = explode(" ", $tmp);
-					$unique[] = end($tmp)."\t-\t".$tmp[0];
-					$sum += $tmp[0];
+				$tmp = trim($result);
+				$tmp = explode(" ", $tmp);
+				$ip .= "<tr><td>".$tmp[0]."</td><td align='right'>".$tmp[1]."</td>";
+				$sum += $tmp[0];
+
+				$tmp = shell_exec("geoiplookup ".end($tmp));
+				$tmp = explode(":", $tmp);
+				if(stristr($tmp[1], "192.168") === FALSE) {
+				    $ip .= "<td  align='right'>".$tmp[1]."</td></tr>";
 				}
+				else{
+					$ip .= "<td  align='right'>HN, VOGUE CORP</td></tr>";
+				}
+				
 			}
 
-			$datos['net_conn'] = count($unique);
-			$datos['inf'] = $unique;
+			$datos['net_conn'] = count($results);
+			$datos['inf'] = $ip;
 			$datos['sum'] = $sum;
 
 			echo json_encode($datos);
