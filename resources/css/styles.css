@@ -1,0 +1,138 @@
+body{
+	background-color: #0e0c17;
+	color: #FFFFFF;
+	font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif; 
+	/*overflow-y: hidden;
+	overflow-x: hidden;*/
+	text-align: center;
+}
+.container{
+	height: 100vh;
+	width: 100%;
+}
+.row{
+	display: block;
+}
+.colum{
+	display: inline-block;
+}
+.section{
+	display: inline-block;
+	height: 32vh;
+	width: 33%;
+	/*border: 1px solid #FFF;*/
+}
+.double-section{
+	width: 64%;
+}
+.stats-bar{
+	display: inline-block;
+	height: 25vh;
+	width: 15%;
+	/*border: 1px solid #eaeaea;*/
+}
+canvas{
+	display: inline-block;
+	height: 25vh;
+	width: 83%;
+    border-bottom: 1px solid #FFF;
+    border-left: 1px dotted #1b172e;
+    border-right: 1px dotted #1b172e; 
+    border-top: 1px solid #FFF;
+}
+.relative{
+	position: relative;
+}
+.label-top{
+	font-size: 9px;
+	height: 9px;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+}
+.label-bot{
+	font-size: 8px;
+	height: 8px;
+	position: absolute;
+	left: 0px;
+}
+.container-general-report{
+	height: 75%;
+}
+.table-general-report{
+	background-color: #0e0c17;
+	font-size: 10px;
+}
+.table-data{
+	width: 65%;
+	text-align: right;
+}
+.table-data-alerts{
+	width: 10%;
+	padding-right: 10%;
+	text-align: right;
+}
+.table-data-min{
+	width: 25%;
+	text-align: right;
+}
+.p-15{
+	padding-left: 15%;
+}
+
+.p-7{
+	padding-left: 7%;
+}
+.section-title{
+	font-size: 11px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.section-general-data{
+	font-size: 9px;
+}
+.color-brand{
+	color: #f0324f;
+	font-size: 14px;
+	font-weight: bold;
+	height: 20px;
+	padding-left: 5%;
+	text-align: center;
+	width: 85%;
+}
+.alert-red{
+	padding: 5px 20px 5px 20px;
+	animation: alerta-roja 1s;
+	-webkit-animation: alerta-roja 1s;
+	-moz-animation: alerta-roja 1s;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+}
+.alert-blue{
+	padding: 5px 20px 5px 20px;
+	animation: alerta-azul 1s;
+	-webkit-animation: alerta-azul 1s;
+	-moz-animation: alerta-azul 1s;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+}
+@keyframes alerta-roja {
+0% {background-color: red}
+100%{background-color: red}
+}
+@-webkit-keyframes alerta-roja {
+0% {background-color: red}
+100%{background-color: red}
+}
+@keyframes alerta-azul{
+	0% {background-color: white}
+	100%{background-color: #2982c6}
+	100%{background-color: #3681f9}
+}
+@-webkit-keyframes alerta-azul{
+	0% {background-color: white}
+	100%{background-color: #2982c6}
+	100%{background-color: #3681f9}
+}

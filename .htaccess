@@ -1,0 +1,16 @@
+#PARA QUE NO SE MUESTREN LOS DIRECTORIOS
+Options -Indexes
+#Access control
+order deny,allow
+# Denies all IP's
+Deny from all
+allow from 127.0.0.1
+#REDIRECCIONAR TODO EL TRAFICO A LA CARPETA PUBLIC
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+#RewriteRule ^ %1 [L,NE,R=302]
+#RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+ErrorDocument 404 /public/index.php
+ErrorDocument 403 /public/index.php
